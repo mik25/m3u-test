@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 axios.defaults.headers.get["content-type"] = "application/json";
-axios.defaults.timeout = 25000
+axios.defaults.timeout = 50000
 axios.defaults.method = "GET"
 
 function getUserData(userConf) {
