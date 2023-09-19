@@ -2,7 +2,7 @@ module.exports={
     id: "org.community.YourIPTV",
     version: "1.1.1",
     name: "IPTV TEST",
-    logo: "https://raw.githubusercontent.com/mik25/stremio-greek-tv/master/hank.jpg",
+    logo: "https://cdn.discordapp.com/icons/667359689780101130/596f5a89339ba7c31a873ff3559645bb.webp?size=160",
     description: "Multi Header M3U Tester",
     types: ["movie", "series","tv","channel"],
     background: "https://dl.strem.io/addon-background.jpg",
