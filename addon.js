@@ -266,7 +266,7 @@ async function getMeta(url,type,id) {
             type,
             name: getMeta.data.info.name === undefined ? "" : getMeta.data.info.name,
             poster: getMeta.data.info.cover_big || "",
-            background: getMeta.data.info.backdrop_path[0] || "https://www.stremio.com/website/wallpapers/stremio-wallpaper-5.jpg",
+            background: getMeta.data.info.backdrop_path[0] || "https://raw.githubusercontent.com/mik25/m3u-test/main/blownaway.jpg",
             description: getMeta.data.info.description || "",
             releaseInfo: String(getMeta.data && getMeta.data.info && (getMeta.data.info.releaseDate || getMeta.data.info.releasedate).split("-")[0])
         }
@@ -319,7 +319,7 @@ async function getMeta(url,type,id) {
                 let id= obj.idPrefix + i.stream_id
                 
                 let name = i.name || ""
-                let background=  "https://www.stremio.com/website/wallpapers/stremio-wallpaper-5.jpg"//i.stream_icon,
+                let background=  "https://raw.githubusercontent.com/mik25/m3u-test/main/blownaway.jpg"//i.stream_icon,
                 let logo =  i.stream_icon || null
 
                 metaTV.push({id,name,type,background,logo})
