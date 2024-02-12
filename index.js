@@ -5,6 +5,8 @@ const config = require('./config');
 const MANIFEST = require('./manifest');
 const { getManifest, getCatalog, getMeta, getUserData } = require("./addon");
 
+// ... (rest of your code)
+
 const NodeCache = require( "node-cache" );
 const myCache = new NodeCache({stdTTL:15*60});
 
