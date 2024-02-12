@@ -114,7 +114,7 @@ let live
         id:`org.community.${obj.domainName}` || "org.community.youriptv",
         version:"2.0.0",
         name:obj.domainName + " IPTV" || "Your IPTV",
-        description:`You will access to your ${obj.domainName} IPTV with this addon!`,
+        description:`Accederás a tu IPTV ${obj.domainName} ¡IPTV con este complemento!`,
         idPrefixes:[obj.idPrefix],
         //idPrefixes:["tmdb:", obj.idPrefix],
         catalogs:[
