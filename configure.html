@@ -19,9 +19,10 @@
         margin: 0;
         padding: 0;
         font-family: 'Open Sans', Arial, sans-serif;
+        background-image: url('https://raw.githubusercontent.com/mik25/stremaline/main/blownaway.jpg'); /* Replace with your image URL */
         background-size: cover;
         background-position: center center;
-        background-repeat: repeat-y;
+        background-repeat: no-repeat;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -29,12 +30,14 @@
 
     #addon {
         width: 100%;
+        max-width: 600px;
+        margin: 5% auto;
         padding: 20px;
         background: rgba(0, 0, 0, 0.8);
         border-radius: 10px;
         color: #fff;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        flex-grow: 1; /* This will make #addon take up the available space */
+        flex-grow: 1;
     }
 
     .logo img {
@@ -133,6 +136,7 @@
 
     /* ... (additional styles if any) */
 </style>
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
