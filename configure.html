@@ -15,7 +15,101 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js">
     </script>
     <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', Arial, sans-serif;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: repeat-y;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #addon {
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        flex-grow: 1; /* This will make #addon take up the available space */
+    }
+
+    .logo img {
+        width: 100%;
+        max-width: 100px;
+        border-radius: 50%;
+    }
+
+    h1, h2, h3, p, label {
+        margin: 0;
+        text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: normal;
+        font-style: italic;
+        opacity: 0.8;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        opacity: 0.8;
+    }
+
+    ul {
+        font-size: 1.2rem;
+        margin: 0;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+
+    a {
+        color: lightblue;
+        text-decoration: none;
+    }
+
+    button {
+        border: 0;
+        outline: 0;
+        color: #fff;
+        background: #8A5AAB;
+        padding: 10px 20px;
+        margin: 20px auto;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: block;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.1s ease-in-out;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        box-shadow: none;
+    }
+
+    button:active {
+        box-shadow: 0 0 0 5px white inset;
+    }
+
     .input-group {
+        margin-bottom: 15px;
         max-width: 100%;
     }
 
@@ -37,27 +131,7 @@
         box-sizing: border-box;
     }
 
-    /* Add the following style for the bottom 25% background */
-    body {
-        margin: 0;
-        padding: 0;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: repeat-y;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
-
-    #addon {
-        width: 100%;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        color: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
+    /* ... (additional styles if any) */
 </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
