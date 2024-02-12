@@ -14,9 +14,9 @@
             margin: 0;
             padding: 0;
             font-family: 'Open Sans', Arial, sans-serif;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: repeat-y;
+            background-size: contain; /* Adjusted background size */
+            background-position: top center; /* Adjusted background position */
+            background-repeat: no-repeat;
         }
 
         #addon {
@@ -154,11 +154,15 @@
             button {
                 font-size: 1.3rem;
             }
+
+            body {
+                background-size: cover; /* Resetting background size for mobile */
+                background-position: center center; /* Resetting background position for mobile */
+            }
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
     <div id="addon">
         <div class="logo">
@@ -379,7 +383,7 @@
             }
 
             if (params &&
-!params.password && $('#listingOption').val() === "api") {
+                !params.password && $('#listingOption').val() === "api") {
                 isParametersValid = false;
                 alert("Password is missing!");
             }
