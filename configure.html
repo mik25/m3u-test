@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-image: url('<%=MANIFEST.background%>');">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -8,123 +8,122 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"
-        rel="stylesheet" />
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js">
+    </script>
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Open Sans', Arial, sans-serif;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: repeat-y;
-    }
+        .input-group {
+            margin-bottom: 15px;
+            max-width: 100%;
+        }
 
-    #addon {
-        width: 90%;
-        max-width: 600px;
-        margin: 5% auto;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        color: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .logo img {
-        width: 100%;
-        max-width: 100px;
-        border-radius: 50%;
-    }
+        .input-field {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-    h1, h2, h3, p, label {
-        margin: 0;
-        text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-    }
+        #exampleIPTVurl {
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
+        #addon {
+            width: 90%;
+            max-width: 600px;
+            margin: 5% auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
 
-    h2 {
-        font-size: 1.5rem;
-        font-weight: normal;
-        font-style: italic;
-        opacity: 0.8;
-    }
+        .logo img {
+            width: 100%;
+            max-width: 100px;
+            border-radius: 50%;
+        }
 
-    h3 {
-        font-size: 1.5rem;
-        margin-top: 10px;
-    }
+        h1,
+        h2,
+        h3,
+        p,
+        label {
+            margin: 0;
+            text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
+        }
 
-    p {
-        font-size: 1.2rem;
-        opacity: 0.8;
-    }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    ul {
-        font-size: 1.2rem;
-        margin: 0;
-        margin-top: 10px;
-        padding-left: 20px;
-    }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            font-style: italic;
+            opacity: 0.8;
+        }
 
-    a {
-        color: lightblue;
-        text-decoration: none;
-    }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
 
-    button {
-        border: 0;
-        outline: 0;
-        color: #fff;
-        background: #8A5AAB;
-        padding: 10px 20px;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.1s ease-in-out;
-        border-radius: 5px;
-    }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
 
-    button:hover {
-        box-shadow: none;
-    }
+        ul {
+            font-size: 1.2rem;
+            margin: 0;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
 
-    button:active {
-        box-shadow: 0 0 0 5px white inset;
-    }
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
 
-    .input-group {
-        margin-bottom: 15px;
-        max-width: 100%;
-    }
+        button {
+            border: 0;
+            outline: 0;
+            color: #fff;
+            background: #8A5AAB;
+            padding: 10px 20px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.1s ease-in-out;
+            border-radius: 5px;
+        }
 
-    .input-label {
-        display: block;
-        margin-bottom: 5px;
-    }
+        button:hover {
+            box-shadow: none;
+        }
 
-    .input-field {
-        width: calc(100% - 20px);
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-    #exampleIPTVurl {
-        width: 100%;
-        box-sizing: border-box;
-    }
-</style>
-
+        button:active {
+            box-shadow: 0 0 0 5px white inset;
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
