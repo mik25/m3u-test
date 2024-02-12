@@ -10,156 +10,155 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"
         rel="stylesheet" />
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Open Sans', Arial, sans-serif;
-        background-size: contain;
-        background-position: top center;
-        background-repeat: no-repeat;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background-size: contain; /* Adjusted background size */
+            background-position: top center; /* Adjusted background position */
+            background-repeat: no-repeat;
+        }
 
-    #addon {
-        width: 90%;
-        max-width: 600px;
-        margin: 5% auto;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        color: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
+        #addon {
+            width: 90%;
+            max-width: 600px;
+            margin: 5% auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
 
-    .logo img {
-        width: 100%;
-        max-width: 100px;
-        border-radius: 50%;
-    }
-
-    h1,
-    h2,
-    h3,
-    p,
-    label {
-        margin: 0;
-        text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-    }
-
-    h1 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-        font-weight: normal;
-        font-style: italic;
-        opacity: 0.8;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-        margin-top: 10px;
-    }
-
-    p {
-        font-size: 1.2rem;
-        opacity: 0.8;
-    }
-
-    ul {
-        font-size: 1.2rem;
-        margin: 0;
-        margin-top: 10px;
-        padding-left: 20px;
-    }
-
-    a {
-        color: lightblue;
-        text-decoration: none;
-    }
-
-    button {
-        border: 0;
-        outline: 0;
-        color: #fff;
-        background: #8A5AAB;
-        padding: 10px 20px;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.1s ease-in-out;
-        border-radius: 5px;
-        width: 100%;
-    }
-
-    button:hover {
-        box-shadow: none;
-    }
-
-    button:active {
-        box-shadow: 0 0 0 5px white inset;
-    }
-
-    .input-group {
-        margin-bottom: 15px;
-        width: 100%;
-    }
-
-    .input-label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 1rem;
-    }
-
-    .input-field {
-        width: calc(100% - 20px);
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 1rem;
-    }
-
-    .hide {
-        display: none;
-    }
-
-    @media (max-width: 768px) {
         .logo img {
-            max-width: 80px;
+            width: 100%;
+            max-width: 100px;
+            border-radius: 50%;
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        label {
+            margin: 0;
+            text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         h2 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            font-weight: normal;
+            font-style: italic;
+            opacity: 0.8;
         }
 
         h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            margin-top: 10px;
         }
 
-        p,
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
         ul {
-            font-size: 1rem;
+            font-size: 1.2rem;
+            margin: 0;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        a {
+            color: lightblue;
+            text-decoration: none;
         }
 
         button {
-            font-size: 1.3rem;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            background: #8A5AAB;
+            padding: 10px 20px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.1s ease-in-out;
+            border-radius: 5px;
+            width: 100%; /* Full width for mobile */
         }
-    }
-</style>
 
+        button:hover {
+            box-shadow: none;
+        }
+
+        button:active {
+            box-shadow: 0 0 0 5px white inset;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Add this style to hide elements initially */
+        .hide {
+            display: none;
+        }
+
+        /* Improved mobile responsiveness */
+        @media (max-width: 768px) {
+            .logo img {
+                max-width: 80px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            p,
+            ul {
+                font-size: 1rem;
+            }
+
+            button {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     <div id="addon">
         <div class="logo">
@@ -312,84 +311,82 @@
                 for (var i = 0; i < arr.length; i++) {
                     var a = arr[i].split('=');
                     var paramName = a[0];
-                    var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+                    var paramValue = typeof a[i] !== 'undefined' ? a[i] : null;
+                if (paramName.match(/\[(\d+)?\]$/)) {
+                    var key = paramName.replace(/\[(\d+)?\]/, '');
+                    if (!obj[key]) obj[key] = [];
 
-                    if (paramName.match(/\[(\d+)?\]$/)) {
-                        var key = paramName.replace(/\[(\d+)?\]/, '');
-                        if (!obj[key]) obj[key] = [];
-
-                        if (paramName.match(/\[\d+\]$/)) {
-                            var index = /\[(\d+)\]/.exec(paramName)[1];
-                            obj[key][index] = paramValue;
-                        } else {
-                            obj[key].push(paramValue);
-                        }
+                    if (paramName.match(/\[\d+\]$/)) {
+                        var index = /\[(\d+)\]/.exec(paramName)[1];
+                        obj[key][index] = paramValue;
                     } else {
-                        if (!obj[paramName]) {
-                            obj[paramName] = paramValue;
-                        } else if (obj[paramName] && typeof obj[paramName] === 'string') {
-                            obj[paramName] = [obj[paramName]];
-                            obj[paramName].push(paramValue);
-                        } else {
-                            obj[paramName].push(paramValue);
-                        }
+                        obj[key].push(paramValue);
+                    }
+                } else {
+                    if (!obj[paramName]) {
+                        obj[paramName] = paramValue;
+                    } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+                        obj[paramName] = [obj[paramName]];
+                        obj[paramName].push(paramValue);
+                    } else {
+                        obj[paramName].push(paramValue);
                     }
                 }
             }
-            obj["BaseURL"] = baseURL || null;
-            return obj;
         }
+        obj["BaseURL"] = baseURL || null;
+        return obj;
+    }
 
-        function generateInstallLink() {
-            var isParametersValid = true;
-            var params = {}, configuration;
+    function generateInstallLink() {
+        var isParametersValid = true;
+        var params = {}, configuration;
 
-            if ($('#listingOption').val() === "url") {
-                var url = $('#iptvURL').val().trim() || "";
-                if (url.length > 0) {
-                    params = getAllUrlParams(url);
-                    if (params && params.output) {
-                        delete params.output;
-                    }
-                    if (params && params.type) {
-                        delete params.type;
-                    }
-
-                    isParametersValid = true;
+        if ($('#listingOption').val() === "url") {
+            var url = $('#iptvURL').val().trim() || "";
+            if (url.length > 0) {
+                params = getAllUrlParams(url);
+                if (params && params.output) {
+                    delete params.output;
                 }
-            } else {
-                var BaseURL = $('#dnsport').val().trim() || null;
-                var username = $('#username').val().trim() || null;
-                var password = $('#password').val().trim() || null;
-
-                params = { username, password, BaseURL };
+                if (params && params.type) {
+                    delete params.type;
+                }
 
                 isParametersValid = true;
             }
+        } else {
+            var BaseURL = $('#dnsport').val().trim() || null;
+            var username = $('#username').val().trim() || null;
+            var password = $('#password').val().trim() || null;
 
-            configuration = encode(params);
+            params = { username, password, BaseURL };
 
-            if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
-                isParametersValid = false;
-                alert("Please indicate http or http(s) status!");
-            }
-
-            if (params && !params.username && $('#listingOption').val() === "api") {
-                isParametersValid = false;
-                alert("Username is missing!");
-            }
-
-            if (params &&
-                !params.password && $('#listingOption').val() === "api") {
-                isParametersValid = false;
-                alert("Password is missing!");
-            }
-            if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
-                installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
-                document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
-            }
+            isParametersValid = true;
         }
-    </script>
-</body>
 
+        configuration = encode(params);
+
+        if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
+            isParametersValid = false;
+            alert("Please indicate http or http(s) status!");
+        }
+
+        if (params && !params.username && $('#listingOption').val() === "api") {
+            isParametersValid = false;
+            alert("Username is missing!");
+        }
+
+        if (params &&
+            !params.password && $('#listingOption').val() === "api") {
+            isParametersValid = false;
+            alert("Password is missing!");
+        }
+        if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
+            installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
+            document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
+        }
+    }
+</script>
+</body>
 </html>
