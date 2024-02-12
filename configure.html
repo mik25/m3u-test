@@ -102,6 +102,24 @@
       button:active {
          box-shadow: 0 0 0 5px white inset;
       }
+
+      /* Additional styles for input layout */
+      .input-group {
+         margin-bottom: 15px;
+      }
+
+      .input-label {
+         display: block;
+         margin-bottom: 5px;
+      }
+
+      .input-field {
+         width: 100%;
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         box-sizing: border-box;
+      }
    </style>
 </head>
 
@@ -116,123 +134,136 @@
       <div class="separator"></div>
 
       <!-- Spanish Translation -->
-<h3 class="gives">Este complemento tiene más :</h3>
-<ul>
-   <li>Películas</li>
-   <li>Series</li>
-   <li>Encabezados</li>
-</ul>
+      <h3 class="gives">Este complemento tiene más :</h3>
+      <ul>
+         <li>Películas</li>
+         <li>Series</li>
+         <li>Encabezados</li>
+      </ul>
 
-<div class="separator"></div>
+      <div class="separator"></div>
 
-<p>¡Compatibilidad Actualizada❗</p>
+      <p>¡Compatibilidad Actualizada❗</p>
 
-<div class="separator"></div>
+      <div class="separator"></div>
 
-<label class="label" for="listingOption">Opción de Listado:</label>
-<select id="listingOption" class="input" onchange="changingListing()">
-   <option value="url" selected>Iniciar sesión mediante URL M3U</option>
-   <option value="api">Iniciar sesión mediante API de Xtream</option>
-</select>
+      <label class="label" for="listingOption">Opción de Listado:</label>
+      <select id="listingOption" class="input" onchange="changingListing()">
+         <option value="url" selected>Iniciar sesión mediante URL M3U</option>
+         <option value="api">Iniciar sesión mediante API de Xtream</option>
+      </select>
 
-<div class="separator"></div>
+      <div class="separator"></div>
 
-<label class="label" id="iptvURLLabel" for="iptvURL">Tu URL de lista de reproducción M3U IPTV</label>
-<input type="text" id="iptvURL" class="input" placeholder="Ingresa tu URL de lista de reproducción M3U IPTV aquí">
-<p id="exampleIPTVurl">ej. http://DOMINIO.COM:80/get.php?username=USUARIO&password=CONTRASEÑA&type=m3u&output=ts</p>
+      <!-- Input fields organized in a sensible layout -->
+      <div class="input-group" id="iptvURLGroup">
+         <label class="input-label" id="iptvURLLabel" for="iptvURL">Tu URL de lista de reproducción M3U IPTV</label>
+         <input type="text" id="iptvURL" class="input-field" placeholder="Ingresa tu URL de lista de reproducción M3U IPTV aquí">
+         <p id="exampleIPTVurl">ej. http://DOMINIO.COM:80/get.php?username=USUARIO&password=CONTRASEÑA&type=m3u&output=ts</p>
+      </div>
 
-<label class="label" id="dnsportLabel" for="dnsport">DNS:PUERTO</label>
-<input type="text" id="dnsport" class="input" placeholder="http://url_aqui.com:puerto">
+      <div class="input-group" id="dnsportGroup">
+         <label class="input-label" id="dnsportLabel" for="dnsport">DNS:PUERTO</label>
+         <input type="text" id="dnsport" class="input-field" placeholder="http://url_aqui.com:puerto">
+      </div>
 
-<label class="label" id="usernameLabel" for="username">Usuario:</label>
-<input type="text" id="username" class="input" placeholder="Tu Usuario">
+      <div class="input-group" id="usernameGroup">
+         <label class="input-label" id="usernameLabel" for="username">Usuario:</label>
+         <input type="text" id="username" class="input-field" placeholder="Tu Usuario">
+      </div>
 
-<label class="label" id="passwordLabel" for="username">Contraseña:</label>
-<input type="text" id="password" class="input" placeholder="Tu Contraseña">
+      <div class="input-group" id="passwordGroup">
+         <label class="input-label" id="passwordLabel" for="password">Contraseña:</label>
+         <input type="text" id="password" class="input-field" placeholder="Tu Contraseña">
+      </div>
 
-<div class="separator"></div>
+      <div class="separator"></div>
 
-<a id="installLink" class="install-link" href="#">
+      <a id="installLink" class="install-link" href="#">
    <button onclick="generateInstallLink()" name="Install">INSTALAR</button>
 </a>
 
-<div class="separator"></div>
+      <div class="separator"></div>
 
-<div id="installLinkInfo">
-   <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
-      <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
-      <input type="text" class="input" id="installURL" readonly>
-      <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
-   </p>
-</div>
+      <div id="installLinkInfo">
+         <!-- Content for the first installLinkInfo -->
+         <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
+            <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
+            <input type="text" class="input" id="installURL" readonly>
+            <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
+         </p>
+      </div>
 
+      <!-- Change the id to installLinkInfo2 -->
+      <div id="installLinkInfo2">
+         <!-- Content for the second installLinkInfo -->
+         <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
+            <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
+            <input type="text" class="input" id="installURL" readonly>
+            <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
+         </p>
+      </div>
 
-<div id="installLinkInfo">
-   <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
-      <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
-      <input type="text" class="input" id="installURL" readonly>
-      <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
-   </p>
-</div>
-<div class="separator"></div>
-</div>
-<script type="text/javascript">
-   $(document).ready(function () {
-      $('#listingOption').val("url")
+      <div class="separator"></div>
+   </div>
 
-      $('#dnsport').toggle()
-      $("#dnsportLabel").toggle()
+   <script type="text/javascript">
+      $(document).ready(function () {
+         $('#listingOption').val("url")
 
-      $('#username').toggle()
-      $("#usernameLabel").toggle()
+         $('#dnsport').toggle()
+         $("#dnsportLabel").toggle()
 
-      $('#password').toggle()
-      $("#passwordLabel").toggle()
+         $('#username').toggle()
+         $("#usernameLabel").toggle()
 
-      if ($('#username').val().length > 0 && $('#password').val().length > 0 && $('#dnsport').val().length > 0) {
-         generateInstallLink()
+         $('#password').toggle()
+         $("#passwordLabel").toggle()
+
+         if ($('#username').val().length > 0 && $('#password').val().length > 0 && $('#dnsport').val().length > 0) {
+            generateInstallLink()
+         }
+      });
+
+      function encode(userData) {
+         return btoa(JSON.stringify(userData)).replace(/\+/g, '-').replace(/\//g, '_').split('=')[0]
       }
-   });
 
-   function encode(userData) {
-      return btoa(JSON.stringify(userData)).replace(/\+/g, '-').replace(/\//g, '_').split('=')[0]
-   }
+      function copy(id) {
+         document.getElementById(id).select();
+         document.execCommand("copy");
+      }
 
-   function copy(id) {
-      document.getElementById(id).select();
-      document.execCommand("copy");
-   }
+      function changingListing() {
+         const option = $('#listingOption').val();
 
-   function changingListing() {
-    const option = $('#listingOption').val();
+         if (option === "api") {
+            $("#dnsport").show();
+            $("#dnsportLabel").show();
 
-    if (option === "api") {
-        $("#dnsport").show();
-        $("#dnsportLabel").show();
+            $('#username').show();
+            $("#usernameLabel").show();
 
-        $('#username').show();
-        $("#usernameLabel").show();
+            $('#password').show();
+            $("#passwordLabel").show();
 
-        $('#password').show();
-        $("#passwordLabel").show();
+            $('#iptvURL').hide();
+            $("#iptvURLLabel").hide();
+            $('#exampleIPTVurl').hide();
+         } else if (option === "url") {
+            $("#dnsport").hide();
+            $("#dnsportLabel").hide();
 
-        $('#iptvURL').hide();
-        $("#iptvURLLabel").hide();
-        $('#exampleIPTVurl').hide();
-    } else if (option === "url") {
-        $("#dnsport").hide();
-        $("#dnsportLabel").hide();
+            $('#username').hide();
+            $("#usernameLabel").hide();
 
-        $('#username').hide();
-        $("#usernameLabel").hide();
+            $('#password').hide();
+            $("#passwordLabel").hide();
 
-        $('#password').hide();
-        $("#passwordLabel").hide();
-
-        $('#iptvURL').show();
-        $("#iptvURLLabel").show();
-        $('#exampleIPTVurl').show();
-    }
+            $('#iptvURL').show();
+            $("#iptvURLLabel").show();
+            $('#exampleIPTVurl').show();
+         }
 
     // Additional fields can be added here based on your requirements
 }
