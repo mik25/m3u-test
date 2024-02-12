@@ -201,23 +201,24 @@
    }
 
    function changingListing() {
+    const option = $('#listingOption').val();
 
-      const option = $('#listingOption').val()
+    $("#dnsport").toggle(option === "api");
+    $("#dnsportLabel").toggle(option === "api");
 
-      $("#dnsport").toggle(option === "api")
-      $("#dnsportLabel").toggle(option == "api")
+    $('#username').toggle(option === "api");
+    $("#usernameLabel").toggle(option === "api");
 
-      $('#username').toggle(option === "api");
-      $("#usernameLabel").toggle(option == "api")
+    $('#password').toggle(option === "api");
+    $("#passwordLabel").toggle(option === "api");
 
-      $('#password').toggle(option === "api");
-      $("#passwordLabel").toggle(option == "api")
+    $('#iptvURL').toggle(option === "url");
+    $("#iptvURLLabel").toggle(option === "url");
+    $('#exampleIPTVurl').toggle(option === "url");
 
-      $('#iptvURL').toggle(option === "url");
-      $("#iptvURLLabel").toggle(option == "url")
+    // Additional fields can be added here based on your requirements
+}
 
-      $('#exampleIPTVurl').toggle(option === "url")
-   }
 	function getAllUrlParams(url) {
    // get query string from url (optional) or window
    var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
