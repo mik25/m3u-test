@@ -112,63 +112,65 @@
       <h2 class="description"><%=MANIFEST.description%></h2>
       <div class="separator"></div>
 
-      <h3 class="gives">This addon has more :</h3>
-      <ul>
-         <li>Movies</li>
-         <li>Series</li>
-         <li>Headers</li>
-      </ul>
+      <!-- Spanish Translation -->
+<h3 class="gives">Este complemento tiene más :</h3>
+<ul>
+   <li>Películas</li>
+   <li>Series</li>
+   <li>Encabezados</li>
+</ul>
 
-      <div class="separator"></div>
+<div class="separator"></div>
 
-      <p>Compatibility Updated❗</p>
+<p>¡Compatibilidad Actualizada❗</p>
 
-      <div class="separator"></div>
+<div class="separator"></div>
 
-      <label class="label" for="listingOption">Listing Option:</label>
-      <select id="listingOption" class="input" onchange="changingListing()">
-         <option value="url" selected>Login via M3U URL</option>
-         <option value="api">Login via Xtream API</option>
-      </select>
-      <div class="separator"></div>
-
-<label class="label" for="listingOption">Listing Option:</label>
+<label class="label" for="listingOption">Opción de Listado:</label>
 <select id="listingOption" class="input" onchange="changingListing()">
-   <option value="url" selected>Login via M3U URL</option>
-   <option value="api">Login via Xtream API</option>
+   <option value="url" selected>Iniciar sesión mediante URL M3U</option>
+   <option value="api">Iniciar sesión mediante API de Xtream</option>
 </select>
 
 <div class="separator"></div>
 
-<label class="label" id="iptvURLLabel" for="iptvURL">Your IPTV M3U PLlaylist URL</label>
-<input type="text" id="iptvURL" class="input" placeholder="Enter your Your IPTV M3U Playlist URL here">
-<p id="exampleIPTVurl">e.g. http://DOMAIN.COM:80/get.php?username=USER&password=PASS&type=m3u&output=ts</p>
+<label class="label" id="iptvURLLabel" for="iptvURL">Tu URL de lista de reproducción M3U IPTV</label>
+<input type="text" id="iptvURL" class="input" placeholder="Ingresa tu URL de lista de reproducción M3U IPTV aquí">
+<p id="exampleIPTVurl">ej. http://DOMINIO.COM:80/get.php?username=USUARIO&password=CONTRASEÑA&type=m3u&output=ts</p>
 
-<label class="label" id="dnsportLabel" for="dnsport">DNS:PORT</label>
-<input type="text" id="dnsport" class="input" placeholder="http://url_here.com:port">
+<label class="label" id="dnsportLabel" for="dnsport">DNS:PUERTO</label>
+<input type="text" id="dnsport" class="input" placeholder="http://url_aqui.com:puerto">
 
-<label class="label" id="usernameLabel" for="username">Username:</label>
-<input type="text" id="username" class="input" placeholder="Your Username">
+<label class="label" id="usernameLabel" for="username">Usuario:</label>
+<input type="text" id="username" class="input" placeholder="Tu Usuario">
 
-<label class="label" id="passwordLabel" for="username">Password:</label>
-<input type="text" id="password" class="input" placeholder="Your Password">
+<label class="label" id="passwordLabel" for="username">Contraseña:</label>
+<input type="text" id="password" class="input" placeholder="Tu Contraseña">
 
 <div class="separator"></div>
 
 <a id="installLink" class="install-link" href="#">
-   <button onclick="generateInstallLink()" name="Install">INSTALL</button>
+   <button onclick="generateInstallLink()" name="Install">INSTALAR</button>
 </a>
 
 <div class="separator"></div>
 
 <div id="installLinkInfo">
-   <p>ℹ️ If the installation button doesn't work, you can just paste the generated URL into the Stremio addon search bar:  
+   <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
       <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
       <input type="text" class="input" id="installURL" readonly>
-      <button onclick="generateInstallLink(); copy('installURL');" title="Copy to clipboard">📋</button>
+      <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
    </p>
 </div>
 
+
+<div id="installLinkInfo">
+   <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
+      <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
+      <input type="text" class="input" id="installURL" readonly>
+      <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
+   </p>
+</div>
 <div class="separator"></div>
 </div>
 <script type="text/javascript">
