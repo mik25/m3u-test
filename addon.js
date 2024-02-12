@@ -3,14 +3,13 @@ axios.defaults.headers.get["content-type"] = "application/json";
 axios.defaults.timeout = 10000
 axios.defaults.method = "GET"
 
-function getUserData(userConf) {
-
-    let retrievedData, url, obj = {}
+function obtenerDatosUsuario(userConf) {
+    let retrievedData, url, obj = {};
     try {
-        retrievedData = JSON.parse(Buffer.from(userConf, 'base64').toString())      
+        retrievedData = JSON.parse(Buffer.from(userConf, 'base64').toString());
     } catch (error) {
-        console.log(error)
-        return "error while parsing url"
+        console.log(error);
+        return "Error al analizar la configuración del usuario.";
     }
     
     let domainName,baseURL,idPrefix
@@ -28,29 +27,40 @@ function getUserData(userConf) {
             password:retrievedData.password
         }
 
-    }else if(retrievedData.includes("http")){
-        url = retrievedData
-        
-        const queryString = url.split('?')[1] || "unknown"
-        baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || "unknown"
-        
-        domainName = url.split("?")[0].split("/")[2].split(":")[0] || "unknown"
-        idPrefix = domainName.charAt(0) + domainName.substr(Math.ceil(domainName.length / 2 - 1), domainName.length % 2 === 0 ? 2 : 1) + domainName.charAt(domainName.length - 1) + ":";
-        
-        if(queryString === undefined){return {result:"URL does not have any queries!"}}
-        if(baseURL === undefined){return {result:"URL does not seem like an url!"}}
-        
-        obj.baseURL = baseURL
-        obj.domainName = domainName
-        obj.idPrefix = idPrefix
-        
-        const urlParams = new URLSearchParams(queryString);
-        const entries = urlParams.entries();
-        
-        for(const entry of entries) {
-            obj[entry[0]] = entry[1]
-        }
+    } else if (retrievedData.includes("http")) {
+    url = retrievedData;
+
+    const queryString = url.split('?')[1] || "desconocido";
+    baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || "desconocido";
+
+    domainName = url.split("?")[0].split("/")[2].split(":")[0] || "desconocido";
+    idPrefix = domainName.charAt(0) + domainName.substr(Math.ceil(domainName.length / 2 - 1), domainName.length % 2 === 0 ? 2 : 1) + domainName.charAt(domainName.length - 1) + ":";
+
+    if (queryString === undefined) {
+        return { result: "¡La URL no tiene ninguna consulta!" };
     }
+    if (baseURL === undefined) {
+        return { result: "¡La URL no parece ser válida!" };
+    }
+
+    obj.baseURL = baseURL;
+    obj.domainName = domainName;
+    obj.idPrefix = idPrefix;
+
+    const urlParams = new URLSearchParams(queryString);
+    const entries = urlParams.entries();
+
+    for (const entry of entries) {
+        obj[entry[0]] = entry[1];
+    }
+}
+
+if (obj.username && obj.password && obj.baseURL) {
+    return obj;
+} else {
+    console.log("Error al analizar la información.");
+    return {};
+}
 
     if(obj.username && obj.password && obj.baseURL){
         return obj
