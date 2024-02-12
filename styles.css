@@ -1,0 +1,12 @@
+/* Paste your existing styles here */
+* {
+   box-sizing: border-box;
+}
+
+body, html {
+   margin: 0;
+   font-family: 'Open Sans', Arial, sans-serif;
+   /* ... other styles ... */
+}
+
+/* ... other styles ... */
