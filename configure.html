@@ -203,21 +203,37 @@
    function changingListing() {
     const option = $('#listingOption').val();
 
-    $("#dnsport").toggle(option === "api");
-    $("#dnsportLabel").toggle(option === "api");
+    if (option === "api") {
+        $("#dnsport").show();
+        $("#dnsportLabel").show();
 
-    $('#username').toggle(option === "api");
-    $("#usernameLabel").toggle(option === "api");
+        $('#username').show();
+        $("#usernameLabel").show();
 
-    $('#password').toggle(option === "api");
-    $("#passwordLabel").toggle(option === "api");
+        $('#password').show();
+        $("#passwordLabel").show();
 
-    $('#iptvURL').toggle(option === "url");
-    $("#iptvURLLabel").toggle(option === "url");
-    $('#exampleIPTVurl').toggle(option === "url");
+        $('#iptvURL').hide();
+        $("#iptvURLLabel").hide();
+        $('#exampleIPTVurl').hide();
+    } else if (option === "url") {
+        $("#dnsport").hide();
+        $("#dnsportLabel").hide();
+
+        $('#username').hide();
+        $("#usernameLabel").hide();
+
+        $('#password').hide();
+        $("#passwordLabel").hide();
+
+        $('#iptvURL').show();
+        $("#iptvURLLabel").show();
+        $('#exampleIPTVurl').show();
+    }
 
     // Additional fields can be added here based on your requirements
 }
+
 
 	function getAllUrlParams(url) {
    // get query string from url (optional) or window
