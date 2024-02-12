@@ -7,138 +7,131 @@
     <link rel="shortcut icon" href="<%=MANIFEST.logo%>" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"
-        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Open Sans', Arial, sans-serif;
-        background-image: url('https://raw.githubusercontent.com/mik25/stremaline/main/blownaway.jpg'); /* Replace with your image URL */
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background-image: url('your-background-image-url.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    #addon {
-        width: 100%;
-        max-width: 600px;
-        margin: 5% auto;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        color: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        flex-grow: 1;
-    }
+        #addon {
+            width: 100%;
+            max-width: 600px;
+            margin: 5% auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
+        }
 
-    .logo img {
-        width: 100%;
-        max-width: 100px;
-        border-radius: 50%;
-    }
+        .logo img {
+            width: 100%;
+            max-width: 100px;
+            border-radius: 50%;
+        }
 
-    h1, h2, h3, p, label {
-        margin: 0;
-        text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-    }
+        h1, h2, h3, p, label {
+            margin: 0;
+            text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
+        }
 
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    h2 {
-        font-size: 1.5rem;
-        font-weight: normal;
-        font-style: italic;
-        opacity: 0.8;
-    }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            font-style: italic;
+            opacity: 0.8;
+        }
 
-    h3 {
-        font-size: 1.5rem;
-        margin-top: 10px;
-    }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
 
-    p {
-        font-size: 1.2rem;
-        opacity: 0.8;
-    }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
 
-    ul {
-        font-size: 1.2rem;
-        margin: 0;
-        margin-top: 10px;
-        padding-left: 20px;
-    }
+        ul {
+            font-size: 1.2rem;
+            margin: 0;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
 
-    a {
-        color: lightblue;
-        text-decoration: none;
-    }
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
 
-    button {
-        border: 0;
-        outline: 0;
-        color: #fff;
-        background: #8A5AAB;
-        padding: 10px 20px;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.1s ease-in-out;
-        border-radius: 5px;
-    }
+        button {
+            border: 0;
+            outline: 0;
+            color: #fff;
+            background: #8A5AAB;
+            padding: 10px 20px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.1s ease-in-out;
+            border-radius: 5px;
+        }
 
-    button:hover {
-        box-shadow: none;
-    }
+        button:hover {
+            box-shadow: none;
+        }
 
-    button:active {
-        box-shadow: 0 0 0 5px white inset;
-    }
+        button:active {
+            box-shadow: 0 0 0 5px white inset;
+        }
 
-    .input-group {
-        margin-bottom: 15px;
-        max-width: 100%;
-    }
+        .input-group {
+            margin-bottom: 15px;
+            max-width: 100%;
+        }
 
-    .input-label {
-        display: block;
-        margin-bottom: 5px;
-    }
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .input-field {
-        width: calc(100% - 20px);
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
+        .input-field {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-    #exampleIPTVurl {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* ... (additional styles if any) */
-</style>
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        #exampleIPTVurl {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
@@ -152,34 +145,35 @@
         <div class="separator"></div>
 
         <!-- Spanish Translation -->
-        <h3 class="gives">Este complemento tiene más :</h3>
+        <h3 class="gives">This add-on has more:</h3>
         <ul>
-            <li>Películas</li>
+            <li>Movies</li>
             <li>Series</li>
-            <li>Encabezados</li>
+            <li>Headings</li>
         </ul>
 
         <div class="separator"></div>
 
-        <p>¡Compatibilidad Actualizada❗</p>
+        <p>Compatibility Updated❗</p>
 
         <div class="separator"></div>
 
-        <label class="label" for="listingOption">Opción de Listado:</label>
+        <label class="label" for="listingOption">Listing Option:</label>
         <select id="listingOption" class="input" onchange="changingListing()">
-            <option value="url" selected>Iniciar sesión mediante URL M3U</option>
-            <option value="api">Iniciar sesión mediante API de Xtream</option>
+            <option value="url" selected>Login via M3U URL</option>
+            <option value="api">Login via Xtream API</option>
         </select>
 
         <div class="separator"></div>
 
         <!-- Input fields organized in a sensible layout -->
         <div class="input-group" id="iptvURLGroup">
-            <label class="input-label" id="iptvURLLabel" for="iptvURL">Tu URL de lista de reproducción M3U IPTV</label>
+            <label class="input-label" id="iptvURLLabel" for="iptvURL">Your M3U IPTV Playlist URL</label>
             <input type="text" id="iptvURL" class="input-field"
-                placeholder="Ingresa tu URL de lista de reproducción M3U IPTV aquí">
-            <p id="exampleIPTVurl">ej. http://DOMINIO.COM:80/get.php?username=USUARIO&password=CONTRASEÑA&type=m3u&output=ts
+                placeholder="Enter your M3U IPTV playlist URL here">
+            <p id="exampleIPTVurl">e.g., http://DOMAIN.COM:80/get.php?username=USERNAME&password=PASSWORD&type=m3u&output=ts
             </p>
+        </div>
         </div>
     </div>
 </body>
