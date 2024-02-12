@@ -11,81 +11,74 @@ function obtenerDatosUsuario(userConf) {
         console.log(error);
         return "Error al analizar la configuración del usuario.";
     }
-    
-    let domainName,baseURL,idPrefix
 
-    if(typeof retrievedData === "object"){
-        domainName = retrievedData.BaseURL.split("/")[2].split(":")[0] || "unknown"
-        baseURL = retrievedData.BaseURL
+    let domainName, baseURL, idPrefix;
+
+    if (typeof retrievedData === "object") {
+        domainName = retrievedData.BaseURL.split("/")[2].split(":")[0] || "unknown";
+        baseURL = retrievedData.BaseURL;
         idPrefix = domainName.charAt(0) + domainName.substr(Math.ceil(domainName.length / 2 - 1), domainName.length % 2 === 0 ? 2 : 1) + domainName.charAt(domainName.length - 1) + ":";
-        
+
         obj = {
             baseURL,
             domainName,
             idPrefix,
-            username:retrievedData.username,
-            password:retrievedData.password
+            username: retrievedData.username,
+            password: retrievedData.password
+        };
+    } else if (retrievedData.includes("http")) {
+        url = retrievedData;
+
+        const queryString = url.split('?')[1] || "desconocido";
+        baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || "desconocido";
+
+        domainName = url.split("?")[0].split("/")[2].split(":")[0] || "desconocido";
+        idPrefix = domainName.charAt(0) + domainName.substr(Math.ceil(domainName.length / 2 - 1), domainName.length % 2 === 0 ? 2 : 1) + domainName.charAt(domainName.length - 1) + ":";
+
+        if (queryString === undefined) {
+            return { result: "¡La URL no tiene ninguna consulta!" };
+        }
+        if (baseURL === undefined) {
+            return { result: "¡La URL no parece ser válida!" };
         }
 
-    } else if (retrievedData.includes("http")) {
-    url = retrievedData;
+        obj.baseURL = baseURL;
+        obj.domainName = domainName;
+        obj.idPrefix = idPrefix;
 
-    const queryString = url.split('?')[1] || "desconocido";
-    baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || "desconocido";
+        const urlParams = new URLSearchParams(queryString);
+        const entries = urlParams.entries();
 
-    domainName = url.split("?")[0].split("/")[2].split(":")[0] || "desconocido";
-    idPrefix = domainName.charAt(0) + domainName.substr(Math.ceil(domainName.length / 2 - 1), domainName.length % 2 === 0 ? 2 : 1) + domainName.charAt(domainName.length - 1) + ":";
-
-    if (queryString === undefined) {
-        return { result: "¡La URL no tiene ninguna consulta!" };
-    }
-    if (baseURL === undefined) {
-        return { result: "¡La URL no parece ser válida!" };
+        for (const entry of entries) {
+            obj[entry[0]] = entry[1];
+        }
     }
 
-    obj.baseURL = baseURL;
-    obj.domainName = domainName;
-    obj.idPrefix = idPrefix;
-
-    const urlParams = new URLSearchParams(queryString);
-    const entries = urlParams.entries();
-
-    for (const entry of entries) {
-        obj[entry[0]] = entry[1];
+    if (obj.username && obj.password && obj.baseURL) {
+        return obj;
+    } else {
+        console.log("Error al analizar la información.");
+        return {};
     }
 }
 
-if (obj.username && obj.password && obj.baseURL) {
-    return obj;
-} else {
-    console.log("Error al analizar la información.");
-    return {};
-}
-
-    if(obj.username && obj.password && obj.baseURL){
-        return obj
-    }else{
-        console.log("Error while parsing!")
-        return {}
-    }
-}
 async function getManifest(url) {
-    const obj = getUserData(url)
+    const obj = obtenerDatosUsuario(url);
 
-    let vod
+    let vod;
     try {
-        vod = await axios({url:`${obj.baseURL}/player_api.php?username=${obj.username}&password=${obj.password}&action=get_vod_categories`})
+        vod = await axios({ url: `${obj.baseURL}/player_api.php?username=${obj.username}&password=${obj.password}&action=get_vod_categories` });
     } catch (error) {
-        console.log(error)
-        return {error}
+        console.log(error);
+        return { error };
     }
-    const vodJSON = vod.data
+    const vodJSON = vod.data;
 
-    let movieCatalog = []
-        if (vod.status === 200){    
+    let movieCatalog = [];
+    if (vod.status === 200) {
         vodJSON.forEach(i => {
-            let name = i.category_name
-            movieCatalog.push(name)
+            let name = i.category_name;
+            movieCatalog.push(name);
         });
     }
     let series
