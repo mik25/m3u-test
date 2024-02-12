@@ -9,7 +9,7 @@ function getUserData(userConf) {
         retrievedData = JSON.parse(Buffer.from(userConf, 'base64').toString());
     } catch (error) {
         console.log(error);
-        return "Error al analizar la configuración del usuario.";
+        return " Error parsing user settings.";
     }
     
     let domainName, baseURL, idPrefix;
@@ -29,17 +29,17 @@ function getUserData(userConf) {
     } else if (retrievedData.includes("http")) {
         url = retrievedData;
 
-        const queryString = url.split('?')[1] || "desconocido";
-        baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || "desconocido";
+        const queryString = url.split('?')[1] || "unknown";
+        baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || "unknown";
 
-        domainName = url.split("?")[0].split("/")[2].split(":")[0] || "desconocido";
+        domainName = url.split("?")[0].split("/")[2].split(":")[0] || "unknown";
         idPrefix = domainName.charAt(0) + domainName.substr(Math.ceil(domainName.length / 2 - 1), domainName.length % 2 === 0 ? 2 : 1) + domainName.charAt(domainName.length - 1) + ":";
 
         if (queryString === undefined) {
-            return { result: "¡La URL no tiene ninguna consulta!" };
+            return { result: "The URL has no query!" };
         }
         if (baseURL === undefined) {
-            return { result: "¡La URL no parece ser válida!" };
+            return { result: "The URL does not seem to be valid!" };
         }
 
         obj.baseURL = baseURL;
@@ -57,7 +57,7 @@ function getUserData(userConf) {
     if (obj.username && obj.password && obj.baseURL) {
         return obj;
     } else {
-        console.log("Error al analizar la información.");
+        console.log("Error parsing information.");
         return {};
     }
 }
@@ -109,28 +109,28 @@ async function getManifest(url) {
         id: `org.community.${obj.domainName}` || "org.community.youriptv",
         version: "2.0.0",
         name: obj.domainName ? `${obj.domainName} IPTV` : "Your IPTV",
-        description: `Accede a tu IPTV ${obj.domainName || 'personalizado'} con este complemento de IPTV para Stremio.`,
+        description: `Access your ${obj.domainName || 'customized'} IPTV with this IPTV add-on for Stremio.`,
         idPrefixes: [obj.idPrefix],
         catalogs: [
             {
                 id: `${obj.idPrefix}movie`,
                 name: obj.domainName || "Your IPTV",
                 type: "movie",
-                extra: [{ name: "Género", options: movieCatalog, isRequired: true }],
+                extra: [{ name: "Genre", options: movieCatalog, isRequired: true }],
                 isRequired: true,
             },
             {
                 id: `${obj.idPrefix}series`,
                 name: obj.domainName || "Your IPTV",
                 type: "series",
-                extra: [{ name: "Género", options: seriesCatalog, isRequired: true }],
+                extra: [{ name: "Genre", options: seriesCatalog, isRequired: true }],
                 isRequired: true,
             },
             {
                 id: `${obj.idPrefix}tv`,
                 name: obj.domainName || "Your IPTV",
                 type: "tv",
-                extra: [{ name: "Género", options: liveCatalog, isRequired: true }],
+                extra: [{ name: "Genre", options: liveCatalog, isRequired: true }],
             },
         ],
         resources: ["catalog", "meta", "stream"],
@@ -140,6 +140,7 @@ async function getManifest(url) {
 
     return manifest;
 }
+
 
 async function getCatalog(url, type, genre) {
     const obj = getUserData(url);
