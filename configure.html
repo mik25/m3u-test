@@ -15,116 +15,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js">
     </script>
     <style>
-        .input-group {
-            margin-bottom: 15px;
-            max-width: 100%;
-        }
+    .input-group {
+        max-width: 100%;
+    }
 
-        .input-label {
-            display: block;
-            margin-bottom: 5px;
-        }
+    .input-label {
+        display: block;
+        margin-bottom: 5px;
+    }
 
-        .input-field {
-            width: calc(100% - 20px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
+    .input-field {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
 
-        #exampleIPTVurl {
-            width: 100%;
-            box-sizing: border-box;
-        }
+    #exampleIPTVurl {
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        #addon {
-            width: 90%;
-            max-width: 600px;
-            margin: 5% auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        }
+    /* Add the following style for the bottom 25% background */
+    body {
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: repeat-y;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
 
-        .logo img {
-            width: 100%;
-            max-width: 100px;
-            border-radius: 50%;
-        }
+    #addon {
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
 
-        h1,
-        h2,
-        h3,
-        p,
-        label {
-            margin: 0;
-            text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: normal;
-            font-style: italic;
-            opacity: 0.8;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        ul {
-            font-size: 1.2rem;
-            margin: 0;
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        a {
-            color: lightblue;
-            text-decoration: none;
-        }
-
-        button {
-            border: 0;
-            outline: 0;
-            color: #fff;
-            background: #8A5AAB;
-            padding: 10px 20px;
-            margin: 20px auto;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: block;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: box-shadow 0.1s ease-in-out;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            box-shadow: none;
-        }
-
-        button:active {
-            box-shadow: 0 0 0 5px white inset;
-        }
-    </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -167,6 +103,9 @@
             <p id="exampleIPTVurl">ej. http://DOMINIO.COM:80/get.php?username=USUARIO&password=CONTRASEÑA&type=m3u&output=ts
             </p>
         </div>
+    </div>
+</body>
+
 
         <div class="input-group hide" id="dnsportGroup">
             <label class="input-label" id="dnsportLabel" for="dnsport">DNS:PUERTO</label>
