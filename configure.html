@@ -95,6 +95,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             transition: box-shadow 0.1s ease-in-out;
             border-radius: 5px;
+            width: 100%; /* Full width for mobile */
         }
 
         button:hover {
@@ -125,6 +126,34 @@
         /* Add this style to hide elements initially */
         .hide {
             display: none;
+        }
+
+        /* Improved mobile responsiveness */
+        @media (max-width: 768px) {
+            .logo img {
+                max-width: 80px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            p,
+            ul {
+                font-size: 1rem;
+            }
+
+            button {
+                font-size: 1.3rem;
+            }
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -349,7 +378,8 @@
                 alert("Username is missing!");
             }
 
-            if (params && !params.password && $('#listingOption').val() === "api") {
+            if (params &&
+!params.password && $('#listingOption').val() === "api") {
                 isParametersValid = false;
                 alert("Password is missing!");
             }
