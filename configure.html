@@ -10,150 +10,79 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"
         rel="stylesheet" />
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Open Sans', Arial, sans-serif;
-            background-size: contain; /* Adjusted background size */
-            background-position: top center; /* Adjusted background position */
-            background-repeat: no-repeat;
-        }
+       body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
 
-        #addon {
-            width: 90%;
-            max-width: 600px;
-            margin: 5% auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        }
+#addon {
+    width: 90%;
+    max-width: 100%;
+    margin: 5% auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
 
-        .logo img {
-            width: 100%;
-            max-width: 100px;
-            border-radius: 50%;
-        }
+.logo img {
+    max-width: 80px;
+}
 
-        h1,
-        h2,
-        h3,
-        p,
-        label {
-            margin: 0;
-            text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-        }
+h1 {
+    font-size: 1.8rem;
+}
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+h2 {
+    font-size: 1.3rem;
+}
 
-        h2 {
-            font-size: 1.5rem;
-            font-weight: normal;
-            font-style: italic;
-            opacity: 0.8;
-        }
+h3 {
+    font-size: 1.3rem;
+}
 
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 10px;
-        }
+p,
+ul {
+    font-size: 1rem;
+}
 
-        p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
+button {
+    font-size: 1.3rem;
+}
 
-        ul {
-            font-size: 1.2rem;
-            margin: 0;
-            margin-top: 10px;
-            padding-left: 20px;
-        }
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+    .logo img {
+        max-width: 80px;
+    }
 
-        a {
-            color: lightblue;
-            text-decoration: none;
-        }
+    h1 {
+        font-size: 1.8rem;
+    }
 
-        button {
-            border: 0;
-            outline: 0;
-            color: #fff;
-            background: #8A5AAB;
-            padding: 10px 20px;
-            margin: 20px auto;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: block;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: box-shadow 0.1s ease-in-out;
-            border-radius: 5px;
-            width: 100%; /* Full width for mobile */
-        }
+    h2 {
+        font-size: 1.3rem;
+    }
 
-        button:hover {
-            box-shadow: none;
-        }
+    h3 {
+        font-size: 1.3rem;
+    }
 
-        button:active {
-            box-shadow: 0 0 0 5px white inset;
-        }
+    p,
+    ul {
+        font-size: 1rem;
+    }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
+    button {
+        font-size: 1.3rem;
+    }
+}
 
-        .input-label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        /* Add this style to hide elements initially */
-        .hide {
-            display: none;
-        }
-
-        /* Improved mobile responsiveness */
-        @media (max-width: 768px) {
-            .logo img {
-                max-width: 80px;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            h3 {
-                font-size: 1.3rem;
-            }
-
-            p,
-            ul {
-                font-size: 1rem;
-            }
-
-            button {
-                font-size: 1.3rem;
-            }
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
