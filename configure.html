@@ -20,7 +20,6 @@
             padding: 0;
             font-family: 'Open Sans', Arial, sans-serif;
             background-image: url('https://raw.githubusercontent.com/mik25/stremaline/main/blownaway.jpg');
-            /* Replace with your image URL */
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -314,54 +313,55 @@
         }
 
         function generateInstallLink() {
-            var isParametersValid = true;
-            var params = {}, configuration;
+    var isParametersValid = true;
+    var params = {}, configuration;
 
-            if ($('#listingOption').val() === "url") {
-                var url = $('#iptvURL').val().trim() || "";
-                if (url.length > 0) {
-                    params = getAllUrlParams(url);
-                    if (params && params.output) {
-                        delete params.output;
-                    }
-                                        if (params && params.type) {
-                        delete params.type;
-                    }
-
-                    isParametersValid = true;
-                }
-            } else {
-                var BaseURL = $('#dnsport').val().trim() || null;
-                var username = $('#username').val().trim() || null;
-                var password = $('#password').val().trim() || null;
-
-                params = { username, password, BaseURL };
-
-                isParametersValid = true;
+    if ($('#listingOption').val() === "url") {
+        var url = $('#iptvURL').val().trim() || "";
+        if (url.length > 0) {
+            params = getAllUrlParams(url);
+            if (params && params.output) {
+                delete params.output;
+            }
+            if (params && params.type) {
+                delete params.type;
             }
 
-            configuration = encode(params);
-
-            if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
-                isParametersValid = false;
-                alert("Please indicate http or http(s) status!");
-            }
-
-            if (params && !params.username && $('#listingOption').val() === "api") {
-                isParametersValid = false;
-                alert("Username is missing!");
-            }
-
-            if (params && !params.password && $('#listingOption').val() === "api") {
-                isParametersValid = false;
-                alert("Password is missing!");
-            }
-
-            if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
-                installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
-                document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
-            }
+            isParametersValid = true;
         }
+    } else {
+        var BaseURL = $('#dnsport').val().trim() || null;
+        var username = $('#username').val().trim() || null;
+        var password = $('#password').val().trim() || null;
+
+        params = { username, password, BaseURL };
+
+        isParametersValid = true;
+    }
+
+    configuration = encode(params);
+
+    if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
+        isParametersValid = false;
+        alert("Please indicate http or http(s) status!");
+    }
+
+    if (params && !params.username && $('#listingOption').val() === "api") {
+        isParametersValid = false;
+        alert("Username is missing!");
+    }
+
+    if (params && !params.password && $('#listingOption').val() === "api") {
+        isParametersValid = false;
+        alert("Password is missing!");
+    }
+
+    if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
+        installLink.href = 'stremio://' + window.location.host + '/manifest.json?config=' + configuration; // Fix the URL construction
+        document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/manifest.json?config=" + configuration; // Fix the URL construction
+    }
+}
+
     </script>
 </body>
 
