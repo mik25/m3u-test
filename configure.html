@@ -15,130 +15,137 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js">
     </script>
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Open Sans', Arial, sans-serif;
-        background-image: url('https://raw.githubusercontent.com/mik25/stremaline/main/blownaway.jpg'); /* Replace with your image URL */
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background-image: url('https://raw.githubusercontent.com/mik25/stremaline/main/blownaway.jpg');
+            /* Replace with your image URL */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    #addon {
-        width: 100%;
-        max-width: 600px;
-        margin: 5% auto;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        color: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        flex-grow: 1;
-    }
+        #addon {
+            width: 100%;
+            max-width: 600px;
+            margin: 5% auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
+        }
 
-    .logo img {
-        width: 100%;
-        max-width: 100px;
-        border-radius: 50%;
-    }
+        .logo img {
+            width: 100%;
+            max-width: 100px;
+            border-radius: 50%;
+        }
 
-    h1, h2, h3, p, label {
-        margin: 0;
-        text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
-    }
+        h1,
+        h2,
+        h3,
+        p,
+        label {
+            margin: 0;
+            text-shadow: 0 0 1vh rgba(0, 0, 0, 0.15);
+        }
 
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    h2 {
-        font-size: 1.5rem;
-        font-weight: normal;
-        font-style: italic;
-        opacity: 0.8;
-    }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            font-style: italic;
+            opacity: 0.8;
+        }
 
-    h3 {
-        font-size: 1.5rem;
-        margin-top: 10px;
-    }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
 
-    p {
-        font-size: 1.2rem;
-        opacity: 0.8;
-    }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
 
-    ul {
-        font-size: 1.2rem;
-        margin: 0;
-        margin-top: 10px;
-        padding-left: 20px;
-    }
+        ul {
+            font-size: 1.2rem;
+            margin: 0;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
 
-    a {
-        color: lightblue;
-        text-decoration: none;
-    }
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
 
-    button {
-        border: 0;
-        outline: 0;
-        color: #fff;
-        background: #8A5AAB;
-        padding: 10px 20px;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: block;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        transition: box-shadow 0.1s ease-in-out;
-        border-radius: 5px;
-    }
+        button {
+            border: 0;
+            outline: 0;
+            color: #fff;
+            background: #8A5AAB;
+            padding: 10px 20px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.1s ease-in-out;
+            border-radius: 5px;
+        }
 
-    button:hover {
-        box-shadow: none;
-    }
+        button:hover {
+            box-shadow: none;
+        }
 
-    button:active {
-        box-shadow: 0 0 0 5px white inset;
-    }
+        button:active {
+            box-shadow: 0 0 0 5px white inset;
+        }
 
-    .input-group {
-        margin-bottom: 15px;
-        max-width: 100%;
-    }
+        .input-group {
+            margin-bottom: 15px;
+            max-width: 100%;
+        }
 
-    .input-label {
-        display: block;
-        margin-bottom: 5px;
-    }
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .input-field {
-        width: calc(100% - 20px);
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
+        .input-field {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-    #exampleIPTVurl {
-        width: 100%;
-        box-sizing: border-box;
-    }
+        #exampleIPTVurl {
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    /* ... (additional styles if any) */
-</style>
+        .hide {
+            display: none;
+        }
+    </style>
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -181,9 +188,6 @@
             <p id="exampleIPTVurl">ej. http://DOMINIO.COM:80/get.php?username=USUARIO&password=CONTRASEÑA&type=m3u&output=ts
             </p>
         </div>
-    </div>
-</body>
-
 
         <div class="input-group hide" id="dnsportGroup">
             <label class="input-label" id="dnsportLabel" for="dnsport">DNS:PUERTO</label>
@@ -208,26 +212,27 @@
 
         <div class="separator"></div>
 
-       <div id="installLinkInfo">
-    <!-- Content for the installLinkInfo -->
-    <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de
-        búsqueda de complementos de Stremio:
-        <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
-        <input type="text" class="input" id="installURL" readonly>
-        <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
-    </p>
-</div>
+        <div id="installLinkInfo">
+            <!-- Content for the installLinkInfo -->
+            <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de
+                búsqueda de complementos de Stremio:
+                <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png"
+                    target="_blank">(Tutorial)</a><br>
+                <input type="text" class="input" id="installURL" readonly>
+                <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
+            </p>
+        </div>
 
         <div class="separator"></div>
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
 
     <script type="text/javascript">
-        var installLink = document.getElementById("installLink");
-
         function changingListing() {
             const option = $('#listingOption').val();
 
@@ -282,81 +287,83 @@
                     var a = arr[i].split('=');
                     var paramName = a[0];
                     var paramValue = typeof a[i] !== 'undefined' ? a[i] : null;
-                if (paramName.match(/\[(\d+)?\]$/)) {
-                    var key = paramName.replace(/\[(\d+)?\]/, '');
-                    if (!obj[key]) obj[key] = [];
+                    if (paramName.match(/\[(\d+)?\]$/)) {
+                        var key = paramName.replace(/\[(\d+)?\]/, '');
+                        if (!obj[key]) obj[key] = [];
 
-                    if (paramName.match(/\[\d+\]$/)) {
-                        var index = /\[(\d+)\]/.exec(paramName)[1];
-                        obj[key][index] = paramValue;
+                        if (paramName.match(/\[\d+\]$/)) {
+                            var index = /\[(\d+)\]/.exec(paramName)[1];
+                            obj[key][index] = paramValue;
+                        } else {
+                            obj[key].push(paramValue);
+                        }
                     } else {
-                        obj[key].push(paramValue);
-                    }
-                } else {
-                    if (!obj[paramName]) {
-                        obj[paramName] = paramValue;
-                    } else if (obj[paramName] && typeof obj[paramName] === 'string') {
-                        obj[paramName] = [obj[paramName]];
-                        obj[paramName].push(paramValue);
-                    } else {
-                        obj[paramName].push(paramValue);
+                        if (!obj[paramName]) {
+                            obj[paramName] = paramValue;
+                        } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+                            obj[paramName] = [obj[paramName]];
+                            obj[paramName].push(paramValue);
+                        } else {
+                            obj[paramName].push(paramValue);
+                        }
                     }
                 }
             }
+            obj["BaseURL"] = baseURL || null;
+            return obj;
         }
-        obj["BaseURL"] = baseURL || null;
-        return obj;
-    }
 
-    function generateInstallLink() {
-        var isParametersValid = true;
-        var params = {}, configuration;
+        function generateInstallLink() {
+            var isParametersValid = true;
+            var params = {}, configuration;
 
-        if ($('#listingOption').val() === "url") {
-            var url = $('#iptvURL').val().trim() || "";
-            if (url.length > 0) {
-                params = getAllUrlParams(url);
-                if (params && params.output) {
-                    delete params.output;
+            if ($('#listingOption').val() === "url") {
+                var url = $('#iptvURL').val().trim() || "";
+                if (url.length > 0) {
+                    params = getAllUrlParams(url);
+                    if (params && params.output) {
+                        delete params.output;
+                    }
+                                        if (params && params.type) {
+                        delete params.type;
+                    }
+
+                    isParametersValid = true;
                 }
-                if (params && params.type) {
-                    delete params.type;
-                }
+            } else {
+                var BaseURL = $('#dnsport').val().trim() || null;
+                var username = $('#username').val().trim() || null;
+                var password = $('#password').val().trim() || null;
+
+                params = { username, password, BaseURL };
 
                 isParametersValid = true;
             }
-        } else {
-            var BaseURL = $('#dnsport').val().trim() || null;
-            var username = $('#username').val().trim() || null;
-            var password = $('#password').val().trim() || null;
 
-            params = { username, password, BaseURL };
+            configuration = encode(params);
 
-            isParametersValid = true;
+            if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
+                isParametersValid = false;
+                alert("Please indicate http or http(s) status!");
+            }
+
+            if (params && !params.username && $('#listingOption').val() === "api") {
+                isParametersValid = false;
+                alert("Username is missing!");
+            }
+
+            if (params && !params.password && $('#listingOption').val() === "api") {
+                isParametersValid = false;
+                alert("Password is missing!");
+            }
+
+            if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
+                installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
+                document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
+            }
         }
-
-        configuration = encode(params);
-
-        if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
-            isParametersValid = false;
-            alert("Please indicate http or http(s) status!");
-        }
-
-        if (params && !params.username && $('#listingOption').val() === "api") {
-            isParametersValid = false;
-            alert("Username is missing!");
-        }
-
-        if (params &&
-            !params.password && $('#listingOption').val() === "api") {
-            isParametersValid = false;
-            alert("Password is missing!");
-        }
-        if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
-            installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
-            document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
-        }
-    }
-</script>
+    </script>
 </body>
+
 </html>
+
