@@ -112,7 +112,7 @@ let live
     }
     const manifest = {
         id:`org.community.${obj.domainName}` || "org.community.youriptv",
-        version:"1.0.1m",
+        version:"5.5.5",
         name:obj.domainName + " IPTV" || "Your IPTV",
         description:`You will access to your ${obj.domainName} IPTV with this addon!`,
         idPrefixes:[obj.idPrefix],
