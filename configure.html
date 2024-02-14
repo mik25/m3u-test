@@ -351,14 +351,15 @@
         alert("Username is missing!");
     }
 
-    if (params && !params.password && $('#listingOption').val() === "api") {
+    if (params &&
+        !params.password && $('#listingOption').val() === "api") {
         isParametersValid = false;
         alert("Password is missing!");
     }
-
     if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
-        installLink.href = 'stremio://' + window.location.host + '/manifest.json?config=' + configuration; // Fix the URL construction
-        document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/manifest.json?config=" + configuration; // Fix the URL construction
+        var manifestLink = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
+        installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
+        document.getElementById("installURL").value = manifestLink;
     }
 }
 
