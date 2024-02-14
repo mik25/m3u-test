@@ -15,6 +15,8 @@ var respond = function (res, data) {
     res.send(data);
   };
   
+// app.use(express.static('public'))
+
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname);
 
@@ -61,14 +63,7 @@ app.get('/:userConf/manifest.json', async function (req, res) {
 
 app.get('/:userConf/catalog/:type/:id/:extra?.json', async function (req, res) {
   let {userConf,type,id,extra} = req.params
-  let extraObj, userConfiguration
-  
-  // try {
-  //   userConfiguration = JSON.parse(Buffer.from(userConf, 'base64').toString())
-  // } catch (error) {
-  //   console.log(error)
-  //   return []
-  // }
+  let extraObj
 
   if(extra){
     try {
@@ -83,12 +78,6 @@ app.get('/:userConf/catalog/:type/:id/:extra?.json', async function (req, res) {
     extraObj.genre = extraObj.genre.replace(/\+/g,' ')
   }
 
-  // let pagination
-  // if(extraObj && extraObj.skip){
-  //   pagination =  extra.skip || 1
-  //   pagination = Math.round((Number(extraObj.skip) / 16) + 1 )
-  // }
-  
   let metas = []
   try {
 
@@ -108,10 +97,6 @@ app.get('/:userConf/catalog/:type/:id/:extra?.json', async function (req, res) {
     
   }
     
-  // if(extraObj && extraObj.search){
-  //   metas = await searchCatalogHandler(extraObj.search,userConfiguration.api,pagination,type)
-  // }
-
 });
 
 app.get('/:userConf/meta/:type/:id.json', async function (req,res){
@@ -134,6 +119,7 @@ app.get('/:userConf/meta/:type/:id.json', async function (req,res){
     respond(res,{error})
   }
 });
+
 
 app.get('/:userConf/stream/:type/:id.json', function (req, res) {
 
@@ -159,7 +145,7 @@ app.get('/:userConf/stream/:type/:id.json', function (req, res) {
       description:"Watch Now"
     }]
   }
-  // console.log(stream)
+
   try {
     respond(res,{streams:stream})
   } catch (error) {

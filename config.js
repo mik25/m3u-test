@@ -1,4 +1,4 @@
-var env = process.env.NODE_ENV ? 'Render':'local';
+var env = process.env.NODE_ENV ? 'beamup':'local';
 
 var config = {
     addon: 'started',
@@ -6,9 +6,9 @@ var config = {
 
 switch (env) {
     //Public server build.
-    case 'Render':
+    case 'beamup':
 		config.port = process.env.PORT
-        config.local = "hy.m3u.org"
+        config.local = "5a0d1888fa64-your-iptv.baby-beamup.club"
         break;
 
     //Local sever build.

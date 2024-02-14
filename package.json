@@ -1,6 +1,6 @@
 {
-  "name": "m3u-test",
-  "version": "2.0.0",
+  "name": "your-iptv-1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.7",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "node-cache": "^5.1.2"
