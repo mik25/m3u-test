@@ -180,22 +180,22 @@
       <div class="separator"></div>
 
       <a id="installLink" class="install-link" href="#">
-   <button onclick="generateInstallLink()" name="Install">INSTALAR</button>
-</a>
+         <button onclick="generateInstallLink()" name="Install">INSTALAR</button>
+      </a>
 
       <div class="separator"></div>
 
       <div id="installLinkInfo">
-    <!-- Content for the first installLinkInfo -->
-    <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
-        <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
-        <input type="text" class="input" id="installURL" readonly>
-        <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
-    </p>
-</div>
+         <!-- Content for the first installLinkInfo -->
+         <p>ℹ️ Si el botón de instalación no funciona, simplemente puedes pegar la URL generada en la barra de búsqueda de complementos de Stremio:
+            <a href="https://user-images.githubusercontent.com/1777923/43146711-65a33ccc-8f6a-11e8-978e-4c69640e63e3.png" target="_blank">(Tutorial)</a><br>
+            <input type="text" class="input" id="installURL" readonly>
+            <button onclick="generateInstallLink(); copy('installURL');" title="Copiar al portapapeles">📋</button>
+         </p>
+      </div>
 
-<div class="separator"></div>
-</div>
+      <div class="separator"></div>
+   </div>
 
    <script type="text/javascript">
       $(document).ready(function () {
@@ -254,133 +254,125 @@
             $("#iptvURLLabel").show();
             $('#exampleIPTVurl').show();
          }
+      }
 
-    // Additional fields can be added here based on your requirements
-}
+      function getAllUrlParams(url) {
+         // get query string from url (optional) or window
+         var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
 
+         var baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || null;
 
-	function getAllUrlParams(url) {
-   // get query string from url (optional) or window
-   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+         // we'll store the parameters here
+         var obj = {};
 
-   var baseURL = url.split('/')[0] + "//" + url.split('?')[0].split('/')[2] || null;
+         // if query string exists
+         if (queryString) {
 
-   // we'll store the parameters here
-   var obj = {};
+            // stuff after # is not part of query string, so get rid of it
+            queryString = queryString.split('#')[0];
 
-   // if query string exists
-   if (queryString) {
+            // split our query string into its component parts
+            var arr = queryString.split('&');
 
-      // stuff after # is not part of query string, so get rid of it
-      queryString = queryString.split('#')[0];
+            for (var i = 0; i < arr.length; i++) {
+               // separate the keys and the values
+               var a = arr[i].split('=');
 
-      // split our query string into its component parts
-      var arr = queryString.split('&');
+               // set parameter name and value (use 'true' if empty)
+               var paramName = a[0];
+               var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
 
-      for (var i = 0; i < arr.length; i++) {
-         // separate the keys and the values
-         var a = arr[i].split('=');
+               // if the paramName ends with square brackets, e.g. colors[] or colors[2]
+               if (paramName.match(/\[(\d+)?\]$/)) {
 
-         // set parameter name and value (use 'true' if empty)
-         var paramName = a[0];
-         var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+                  // create key if it doesn't exist
+                  var key = paramName.replace(/\[(\d+)?\]/, '');
+                  if (!obj[key]) obj[key] = [];
 
-         // (optional) keep case consistent
-         // paramName = paramName.toLowerCase();
-         // if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+                  // if it's an indexed array e.g. colors[2]
+                  if (paramName.match(/\[\d+\]$/)) {
+                     // get the index value and add the entry at the appropriate position
+                     var index = /\[(\d+)\]/.exec(paramName)[1];
+                     obj[key][index] = paramValue;
+                  } else {
+                     // otherwise add the value to the end of the array
+                     obj[key].push(paramValue);
+                  }
+               } else {
+                  // we're dealing with a string
+                  if (!obj[paramName]) {
+                     // if it doesn't exist, create property
+                     obj[paramName] = paramValue;
+                  } else if (obj[paramName] && typeof obj[paramName] === 'string') {
+                     // if property does exist and it's a string, convert it to an array
+                     obj[paramName] = [obj[paramName]];
+                     obj[paramName].push(paramValue);
+                  } else {
+                     // otherwise add the property
+                     obj[paramName].push(paramValue);
+                  }
+               }
+            }
+         }
+         obj["BaseURL"] = baseURL || null;
+         return obj;
+      }
 
-         // if the paramName ends with square brackets, e.g. colors[] or colors[2]
-         if (paramName.match(/\[(\d+)?\]$/)) {
+      function generateInstallLink() {
 
-            // create key if it doesn't exist
-            var key = paramName.replace(/\[(\d+)?\]/, '');
-            if (!obj[key]) obj[key] = [];
+         var isParametersValid = true;
 
-            // if it's an indexed array e.g. colors[2]
-            if (paramName.match(/\[\d+\]$/)) {
-               // get the index value and add the entry at the appropriate position
-               var index = /\[(\d+)\]/.exec(paramName)[1];
-               obj[key][index] = paramValue;
-            } else {
-               // otherwise add the value to the end of the array
-               obj[key].push(paramValue);
+         var params = {}, configuration;
+
+         if ($('#listingOption').val() === "url") {
+            // IF M3U URL OPTION IS SELECTED
+
+            var url = $('#iptvURL').val().trim() || "";
+            if (url.length > 0) {
+               params = getAllUrlParams(url);
+
+               if (params && params.output) {
+                  delete params.output;
+               }
+               if (params && params.type) {
+                  delete params.type;
+               }
+               isParametersValid = true;
             }
          } else {
-            // we're dealing with a string
-            if (!obj[paramName]) {
-               // if it doesn't exist, create property
-               obj[paramName] = paramValue;
-            } else if (obj[paramName] && typeof obj[paramName] === 'string') {
-               // if property does exist and it's a string, convert it to an array
-               obj[paramName] = [obj[paramName]];
-               obj[paramName].push(paramValue);
-            } else {
-               // otherwise add the property
-               obj[paramName].push(paramValue);
-            }
+            // IF API OPTION IS SELECTED
+
+            var BaseURL = $('#dnsport').val().trim() || null;
+            var username = $('#username').val().trim() || null;
+            var password = $('#password').val().trim() || null;
+
+            params = { username, password, BaseURL };
+
+            isParametersValid = true;
+         }
+
+         configuration = encode(params);
+
+         if (params && params.BaseURL && !params.BaseURL.includes("http") && params.BaseURL.length > 0) {
+            isParametersValid = false;
+            alert("Please indicate http or http(s) status!");
+         }
+
+         if (params && !params.username) {
+            isParametersValid = false;
+            alert("Username is missing!");
+         }
+
+         if (params && !params.password) {
+            isParametersValid = false;
+            alert("Password is missing!");
+         }
+
+         if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
+            installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
+            document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
          }
       }
-   }
-   obj["BaseURL"] = baseURL || null;
-   return obj;
-}
-function generateInstallLink() {
-
-   var isParametersValid = true;
-
-   var params = {}, configuration;
-
-   if ($('#listingOption').val() === "url") {
-      // IF M3U URL OPTION IS SELECTED
-
-      var url = $('#iptvURL').val().trim() || "";
-      if (url.length > 0) {
-         // console.log("url:",encode(url))
-         params = getAllUrlParams(url);
-
-         if (params && params.output) {
-            delete params.output;
-         }
-         if (params && params.type) {
-            delete params.type;
-         }
-         isParametersValid = true;
-      }
-   } else {
-      // IF API OPTION IS SELECTED
-
-      var BaseURL = $('#dnsport').val().trim() || null;
-      var username = $('#username').val().trim() || null;
-      var password = $('#password').val().trim() || null;
-
-      params = { username, password, BaseURL };
-
-      isParametersValid = true;
-   }
-
-   configuration = encode(params);
-
-   if (params && params.BaseURL && !params.BaseURL.includes("http") && params.BaseURL.length > 0) {
-      isParametersValid = false;
-      alert("Please indicate http or http(s) status!");
-   }
-
-   if (params && !params.username) {
-      isParametersValid = false;
-      alert("Username is missing!");
-   }
-
-   if (params && !params.password) {
-      isParametersValid = false;
-      alert("Password is missing!");
-   }
-
-   if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
-      installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
-      document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
-   }
-
-}
-</script>
-   </body>
+   </script>
+</body>
 </html>
