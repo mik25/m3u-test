@@ -74,7 +74,7 @@ if(extra){
   }
 }
 
-if(extraObj && extraObj.genre && extraObj.genre.includes("+")){
+if(extraObj && extraObj.genre){
   extraObj.genre = extraObj.genre.replace(/\+/g,' ')
 }
 
