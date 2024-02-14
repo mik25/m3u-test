@@ -76,61 +76,44 @@ async function getManifest(url) {
         return { error };
     }
 
-    const vodJSON = vod.data;
-    const seriesJSON = series.data;
-    const liveJSON = live.data;
+    const vodJSON = vod.data && vod.data.categories ? vod.data.categories : [];
+    const seriesJSON = series.data && series.data.categories ? series.data.categories : [];
+    const liveJSON = live.data && live.data.categories ? live.data.categories : [];
 
     let movieCatalog = [];
     let seriesCatalog = [];
     let liveCatalog = [];
 
-    if (vod.status === 200) {
-        vodJSON.forEach(i => {
-            let name = i.category_name;
-            movieCatalog.push(name);
-        });
-    }
-
-    if (series.status === 200) {
-        seriesJSON.forEach(i => {
-            let name = i.category_name;
-            seriesCatalog.push(name);
-        });
-    }
-
-    if (live.status === 200) {
-        liveJSON.forEach(i => {
-            let name = i.category_name;
-            liveCatalog.push(name);
-        });
-    }
+    movieCatalog = vodJSON.map(i => i.category_name);
+    seriesCatalog = seriesJSON.map(i => i.category_name);
+    liveCatalog = liveJSON.map(i => i.category_name);
 
     const manifest = {
         id: `org.community.${obj.domainName}` || "org.community.youriptv",
         version: "2.0.0",
         name: obj.domainName ? `${obj.domainName} IPTV` : "Your IPTV",
-        description: `Accede a tu IPTV ${obj.domainName || 'personalizado'} con este complemento de IPTV para Stremio.`,
+        description: `Access your IPTV ${obj.domainName || 'customized'} with this IPTV addon for Stremio.`,
         idPrefixes: [obj.idPrefix],
         catalogs: [
             {
                 id: `${obj.idPrefix}movie`,
                 name: obj.domainName || "Your IPTV",
                 type: "movie",
-                extra: [{ name: "Género", options: movieCatalog, isRequired: true }],
+                extra: [{ name: "Genre", options: movieCatalog, isRequired: true }],
                 isRequired: true,
             },
             {
                 id: `${obj.idPrefix}series`,
                 name: obj.domainName || "Your IPTV",
                 type: "series",
-                extra: [{ name: "Género", options: seriesCatalog, isRequired: true }],
+                extra: [{ name: "Genre", options: seriesCatalog, isRequired: true }],
                 isRequired: true,
             },
             {
                 id: `${obj.idPrefix}tv`,
                 name: obj.domainName || "Your IPTV",
                 type: "tv",
-                extra: [{ name: "Género", options: liveCatalog, isRequired: true }],
+                extra: [{ name: "Genre", options: liveCatalog, isRequired: true }],
             },
         ],
         resources: ["catalog", "meta", "stream"],
