@@ -20,6 +20,7 @@
             padding: 0;
             font-family: 'Open Sans', Arial, sans-serif;
             background-image: url('https://raw.githubusercontent.com/mik25/stremaline/main/blownaway.jpg');
+            /* Replace with your image URL */
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -137,12 +138,7 @@
             width: 100%;
             box-sizing: border-box;
         }
-
-        .hide {
-            display: none;
-        }
     </style>
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -226,12 +222,13 @@
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-    </script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
 
     <script type="text/javascript">
+        var installLink = document.getElementById("installLink");
+
         function changingListing() {
             const option = $('#listingOption').val();
 
@@ -313,58 +310,55 @@
         }
 
         function generateInstallLink() {
-    var isParametersValid = true;
-    var params = {}, configuration;
+            var isParametersValid = true;
+            var params = {}, configuration;
 
-    if ($('#listingOption').val() === "url") {
-        var url = $('#iptvURL').val().trim() || "";
-        if (url.length > 0) {
-            params = getAllUrlParams(url);
-            if (params && params.output) {
-                delete params.output;
-            }
-            if (params && params.type) {
-                delete params.type;
+            if ($('#listingOption').val() === "url") {
+                var url = $('#iptvURL').val().trim() || "";
+                if (url.length > 0) {
+                    params = getAllUrlParams(url);
+                    if (params && params.output) {
+                        delete params.output;
+                    }
+                    if (params && params.type) {
+                        delete params.type;
+                    }
+
+                    isParametersValid = true;
+                }
+            } else {
+                var BaseURL = $('#dnsport').val().trim() || null;
+                var username = $('#username').val().trim() || null;
+                var password = $('#password').val().trim() || null;
+
+                params = { username, password, BaseURL };
+
+                isParametersValid = true;
             }
 
-            isParametersValid = true;
+            configuration = encode(params);
+
+            if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
+                isParametersValid = false;
+                alert("Please indicate http or http(s) status!");
+            }
+
+            if (params && !params.username && $('#listingOption').val() === "api") {
+                isParametersValid = false;
+                alert("Username is missing!");
+            }
+
+            if (params &&
+                !params.password && $('#listingOption').val() === "api") {
+                isParametersValid = false;
+                alert("Password is missing!");
+            }
+            if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
+                installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
+                document.getElementById("installURL").value = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
+            }
         }
-    } else {
-        var BaseURL = $('#dnsport').val().trim() || null;
-        var username = $('#username').val().trim() || null;
-        var password = $('#password').val().trim() || null;
-
-        params = { username, password, BaseURL };
-
-        isParametersValid = true;
-    }
-
-    configuration = encode(params);
-
-    if (params && params.BaseURL && !params.BaseURL.includes("http") && !params.BaseURL.includes("https") && params.BaseURL.length > 0) {
-        isParametersValid = false;
-        alert("Please indicate http or http(s) status!");
-    }
-
-    if (params && !params.username && $('#listingOption').val() === "api") {
-        isParametersValid = false;
-        alert("Username is missing!");
-    }
-
-    if (params &&
-        !params.password && $('#listingOption').val() === "api") {
-        isParametersValid = false;
-        alert("Password is missing!");
-    }
-    if (params && params.username && params.password && params.BaseURL && isParametersValid === true) {
-        var manifestLink = window.location.protocol + "//" + window.location.host + "/" + configuration + "/manifest.json";
-        installLink.href = 'stremio://' + window.location.host + '/' + configuration + '/manifest.json';
-        document.getElementById("installURL").value = manifestLink;
-    }
-}
-
     </script>
 </body>
 
 </html>
-
