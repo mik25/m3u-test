@@ -5,8 +5,6 @@ const config = require('./config');
 const MANIFEST = require('./manifest');
 const { getManifest, getCatalog, getMeta, getUserData } = require("./addon");
 
-// ... (rest of your code)
-
 const NodeCache = require( "node-cache" );
 const myCache = new NodeCache({stdTTL:15*60});
 
@@ -65,19 +63,25 @@ app.get('/:userConf/catalog/:type/:id/:extra?.json', async function (req, res) {
   let {userConf,type,id,extra} = req.params
   let extraObj, userConfiguration
   
-if(extra){
-  try {
-    extraObj = JSON.parse('{"' + decodeURI(extra.replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}')
-  } catch (error) {
-    console.log(error)
-    return respond(res, {metas:[]})
+  // try {
+  //   userConfiguration = JSON.parse(Buffer.from(userConf, 'base64').toString())
+  // } catch (error) {
+  //   console.log(error)
+  //   return []
+  // }
+
+  if(extra){
+    try {
+      extraObj = JSON.parse('{"' + decodeURI(extra.replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}')
+    } catch (error) {
+      console.log(error)
+      return respond(res, {metas:[]})
+    }
   }
-}
-
-if(extraObj && extraObj.genre){
-  extraObj.genre = extraObj.genre.replace(/\+/g,' ')
-}
-
+  
+  if(extraObj && extraObj.genre && extraObj.genre.includes("+")){
+    extraObj.genre = extraObj.genre.replace(/\+/g,' ')
+  }
 
   // let pagination
   // if(extraObj && extraObj.skip){
