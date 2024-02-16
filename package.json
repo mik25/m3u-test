@@ -1,16 +1,19 @@
 {
-  "name": "m3u-test",
-  "version": "2.0.0",
-  "description": "",
+  "name": "your-iptv-1",
+  "version": "1.0.0",
+  "description": "Your IPTV Description",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Your Name",
   "license": "ISC",
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^0.24.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "node-cache": "^5.1.2"
