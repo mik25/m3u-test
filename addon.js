@@ -72,12 +72,12 @@ async function getManifest(url) {
     const vodJSON = vod.data
 
     let movieCatalog = []
-        if (vod.status === 200){    
-        vodJSON.forEach(i => {
-            let name = i.category_name
-            movieCatalog.push(name)
-        });
-    }
+        if (vod.status === 200 && Array.isArray(vodJSON)) {    
+    vodJSON.forEach(i => {
+        let name = i.category_name
+        movieCatalog.push(name)
+    });
+}
     let series
     try {
         series = await axios({url:`${obj.baseURL}/player_api.php?username=${obj.username}&password=${obj.password}&action=get_series_categories`})
