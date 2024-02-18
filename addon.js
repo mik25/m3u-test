@@ -88,13 +88,14 @@ async function getManifest(url) {
     const seriesJSON = series.data
 
     let seriesCatalog = []
-    if(series.status === 200){    
-        seriesJSON.forEach(i => {
-            let name = i.category_name
-            seriesCatalog.push(name)
-        });
-    }
-let live
+    if(series.status === 200 && Array.isArray(seriesJSON)){    
+    seriesJSON.forEach(i => {
+        let name = i.category_name
+        seriesCatalog.push(name)
+    });
+}
+
+    let live
     try {
         live = await axios({url:`${obj.baseURL}/player_api.php?username=${obj.username}&password=${obj.password}&action=get_live_categories`})
     } catch (error) {
@@ -104,12 +105,12 @@ let live
     const liveJSON = live.data
 
     let liveCatalog = []
-    if(series.status === 200){    
-        liveJSON.forEach(i => {
-            let name = i.category_name
-            liveCatalog.push(name)
-        });
-    }
+    if(live.status === 200 && Array.isArray(liveJSON)){    
+    liveJSON.forEach(i => {
+        let name = i.category_name
+        liveCatalog.push(name)
+    });
+}
     const manifest = {
         id:`org.community.${obj.domainName}` || "org.community.youriptv",
         version:"2.0.0",
