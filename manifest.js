@@ -1,6 +1,6 @@
 module.exports={
     id: "org.community.YourIPTV",
-    version: "2.0.0",
+    version: "2.0.5",
     name: "Stremio IPTV",
     logo: "https://hy-torrentio.surge.sh/configure_files/h_y-high-resolution-logo-transparent.png",
     description: "STREMIO IPTV",
